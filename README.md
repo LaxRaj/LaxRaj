@@ -2,7 +2,7 @@
 <h3 align="center">A passionate full Stack Developer based out of San Francisco.</h3>
 
 
-```md
+
 <!--START_SECTION:waka-->
 <!--END_SECTION:waka-->
-```
+
