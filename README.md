@@ -2,7 +2,7 @@
 <h3 align="center">A passionate full Stack Developer based out of San Francisco.</h3>
   <br>
   <hr>
-<section align="center">
+<!-- <section align="center">
   <a href="https://roadmap.sh"><img src="https://api.roadmap.sh/v1-badge/tall/6538a98c035e8d1be736bfeb?variant=dark" alt="roadmap.sh"/>    </a>
 
 <br>
@@ -11,6 +11,8 @@
   </a>
 </section>
 
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=LaxRaj)](https://github.com/anuraghazra/github-readme-stats)
+ -->
 <!--START_SECTION:waka-->
 <!--END_SECTION:waka-->
 
