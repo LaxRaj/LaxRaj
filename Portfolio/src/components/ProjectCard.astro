@@ -1,0 +1,48 @@
+---
+import type { Project } from "../data/projects";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<a
+  href={project.href}
+  class="press group flex flex-col border-2 border-ink bg-paper shadow-brutal"
+>
+  <div class="flex items-start justify-between border-b-2 border-ink p-4">
+    <span class="font-mono text-xs font-bold text-ink-soft">{project.no}</span>
+    <span
+      class="font-mono text-xs font-bold transition-colors group-hover:text-signal"
+      >{project.year}</span
+    >
+  </div>
+
+  <div class="flex flex-1 flex-col gap-3 p-5">
+    <h3
+      class="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+    >
+      {project.title}
+    </h3>
+    <p class="text-sm leading-relaxed text-ink-soft">{project.blurb}</p>
+
+    <div class="mt-auto flex flex-wrap items-center gap-2 pt-3">
+      {
+        project.tags.map((tag) => (
+          <span class="border-2 border-ink px-2 py-0.5 text-[10px] font-bold">
+            {tag}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+
+  <div
+    class="flex items-center justify-between border-t-2 border-ink bg-acid px-5 py-3 text-xs font-bold"
+  >
+    VIEW PROJECT
+    <span class="transition-transform group-hover:translate-x-1">→</span>
+  </div>
+</a>

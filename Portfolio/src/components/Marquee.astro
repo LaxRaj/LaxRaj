@@ -1,0 +1,20 @@
+---
+import { site } from "../data/site";
+// Duplicate the list so the loop is seamless (track animates -50%).
+const items = [...site.disciplines, ...site.disciplines];
+---
+
+<div
+  class="marquee overflow-hidden border-y-2 border-ink bg-ink py-3 text-paper select-none"
+>
+  <div class="marquee-track">
+    {
+      items.map((d) => (
+        <span class="flex items-center gap-6 px-6 font-display text-xl font-bold tracking-tight whitespace-nowrap sm:text-2xl">
+          {d}
+          <span class="text-acid">✶</span>
+        </span>
+      ))
+    }
+  </div>
+</div>

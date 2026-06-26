@@ -1,0 +1,59 @@
+---
+import { site } from "../data/site";
+---
+
+<header
+  class="sticky top-0 z-50 border-b-2 border-ink bg-paper/90 backdrop-blur"
+>
+  <nav
+    class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6"
+  >
+    <!-- Logo / name -->
+    <a
+      href="#top"
+      class="group flex items-center gap-2 font-display text-lg font-bold tracking-tight"
+    >
+      <span
+        class="grid h-8 w-8 place-items-center border-2 border-ink bg-acid text-sm font-bold"
+        >{site.initials}</span
+      >
+      <span class="hidden sm:inline">{site.name}</span>
+    </a>
+
+    <!-- Links -->
+    <ul class="hidden items-center gap-1 text-xs font-bold md:flex">
+      {
+        site.nav.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="press inline-block border-2 border-transparent px-3 py-1.5 hover:border-ink hover:bg-acid"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- Status pill -->
+    <div class="flex items-center gap-3">
+      {
+        site.available && (
+          <span class="hidden items-center gap-2 border-2 border-ink bg-paper px-2.5 py-1 text-[10px] font-bold sm:flex">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-75" />
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-signal" />
+            </span>
+            {site.status}
+          </span>
+        )
+      }
+      <a
+        href="#contact"
+        class="press border-2 border-ink bg-ink px-3 py-1.5 text-xs font-bold text-paper hover:bg-acid hover:text-ink"
+        >GET IN TOUCH</a
+      >
+    </div>
+  </nav>
+</header>

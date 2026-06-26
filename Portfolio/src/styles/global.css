@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   BRUTALIST DESIGN TOKENS
+   Tailwind v4 reads these as utilities, e.g. bg-paper, text-ink, border-acid,
+   font-mono, font-display. Change a value here and it propagates everywhere.
+   ========================================================================== */
+@theme {
+  /* Color — stark, high-contrast, one loud signal accent */
+  --color-paper: #ece9e1; /* concrete off-white background */
+  --color-paper-2: #e2ded3; /* slightly deeper panel */
+  --color-ink: #0b0b0b; /* near-black foreground / borders */
+  --color-ink-soft: #3a3a36; /* muted text */
+  --color-acid: #e5ff00; /* primary signal — acid yellow */
+  --color-signal: #ff3d00; /* secondary signal — hot red-orange */
+  --color-electric: #2a2af0; /* tertiary — electric blue */
+
+  /* Type */
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", "Menlo",
+    monospace;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+
+  /* Radius — brutalism stays sharp */
+  --radius-none: 0px;
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-mono);
+    /* subtle grid texture so flat areas don't read as empty */
+    background-image:
+      linear-gradient(to right, rgba(11, 11, 11, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(11, 11, 11, 0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--color-acid);
+    color: var(--color-ink);
+  }
+
+  /* Visible, on-brand focus ring for keyboard users */
+  :focus-visible {
+    outline: 3px solid var(--color-electric);
+    outline-offset: 2px;
+  }
+}
+
+/* ==========================================================================
+   BRUTALIST UTILITIES
+   Hard, offset, zero-blur shadows are the signature move.
+   ========================================================================== */
+@utility shadow-brutal {
+  box-shadow: 6px 6px 0 0 var(--color-ink);
+}
+@utility shadow-brutal-sm {
+  box-shadow: 4px 4px 0 0 var(--color-ink);
+}
+@utility shadow-brutal-lg {
+  box-shadow: 10px 10px 0 0 var(--color-ink);
+}
+@utility shadow-brutal-acid {
+  box-shadow: 6px 6px 0 0 var(--color-acid);
+}
+
+/* Press-on-hover interaction: element slides into its own shadow */
+@utility press {
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
+}
+.press:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0 0 var(--color-ink);
+}
+.press:active {
+  transform: translate(6px, 6px);
+  box-shadow: 0 0 0 0 var(--color-ink);
+}
+
+/* ==========================================================================
+   MARQUEE — scrolling discipline ticker
+   ========================================================================== */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
